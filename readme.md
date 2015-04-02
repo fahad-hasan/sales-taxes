@@ -5,6 +5,7 @@ Run the following command to see help text and usage.
 ```
 php source\sales-tax.php
 ```
+Output:
 ```
 Welcome to Sales Tax Calculator!
 Usage:
