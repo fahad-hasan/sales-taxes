@@ -28,7 +28,7 @@ if (!empty($options['input'])) {
     print("Welcome to Sales Tax Calculator!\r\n");
     print("Usage:\r\n\r\n");
     print("--input:\tRequired\tThe location of the CSV file\r\n\r\n");
-    print("In order to run the unit tests, please run \"phpunit --verbose tests\\tests.php\"\r\n");
+    print("In order to run the unit tests, please run \"phpunit --verbose unit-tests.php\"\r\n");
 }
 
 ?>
