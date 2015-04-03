@@ -14,8 +14,13 @@ $options = getopt("i:", ["input:"]);
 if (!empty($options['input'])) {
     try 
     {
+        //Lets initialize a new Cart
         $cart = new Cart();
+
+        //Dependency injection
         DataLoader::loadFromCSV($options['input'], $cart);
+
+        //Checkout Cart
         $cart->checkOut();
     } 
     catch(Exception $ex) 

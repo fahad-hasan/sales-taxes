@@ -1,5 +1,10 @@
 <?php
 
+/*
+Class: CartItems
+Represents a single CartItem object. 
+*/
+
 class CartItem
 {
     use roundNumber;
@@ -11,6 +16,9 @@ class CartItem
     public $import_duty;
     public $price;
 
+    /*
+    Initializes a new CartItem object from an array
+    */
     public function __construct($item) 
     {
         $this->name = $item['name'];

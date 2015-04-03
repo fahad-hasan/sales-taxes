@@ -1,15 +1,31 @@
 <?php
 
+/*
+Class: CartItemFactory
+Factory class for creating CartItem objects. 
+*/
+
 class CartItemFactory 
 {
+    use cleanString;
+
+    //Constants
     const SALES_TAX_PERCENT = 0.1;
     const IMPORT_DUTY_PERCENT = 0.05;
 
+    /*
+    Checks if an item is imported or not
+    Returns true/false
+    */
     private function isImported($name) 
     {
         return strpos(strtolower($name), "imported") !== false ? true : false;
     }
 
+    /*
+    Checks if an item is exmpted from sales tax or not
+    Returns true/false
+    */
     private function isTaxExempted($name) 
     {
         $keywords = array("food", "chocolate", "chocolates", "pills", "pill", "book", "books");
@@ -21,6 +37,10 @@ class CartItemFactory
         }
     }
 
+    /*
+    Calculates sales tax for an item
+    Returns number
+    */
     private function getSalesTax($name, $price)
     {    
         if (self::isTaxExempted($name)) {
@@ -30,6 +50,10 @@ class CartItemFactory
         }
     }
 
+    /*
+    Calculates import duty for an item
+    Returns number
+    */
     private function getImportDuty($name, $price) 
     {
         if (self::isImported($name)) {
@@ -39,14 +63,10 @@ class CartItemFactory
         }
     }
 
-    private static function cleanString($text) 
-    {
-        $text = htmlspecialchars(strip_tags($text));
-        $text = str_replace('"', "", $text);
-        $text = str_replace("'", "", $text);
-        return $text;
-    }
-
+    /*
+    Creates a new CartItem, calculates atx and import duty
+    Returns CartItem object
+    */
     public static function create($quantity, $name, $price) 
     {
         $item = array();

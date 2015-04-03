@@ -1,5 +1,10 @@
 <?php
 
+/*
+Class: DataLoader
+Loads items from a CSV into a cart 
+*/
+
 class DataLoader
 {
     public static function loadFromCSV($csv_path, Cart &$cart, $headers_first_line = true) 
