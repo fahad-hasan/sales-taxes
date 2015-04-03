@@ -1,6 +1,7 @@
 <?php
 
 include join(DIRECTORY_SEPARATOR, ["classes", "Traits.php"]);
+include join(DIRECTORY_SEPARATOR, ["classes", "Receipt.class.php"]);
 include join(DIRECTORY_SEPARATOR, ["classes", "DataLoader.class.php"]);
 include join(DIRECTORY_SEPARATOR, ["classes", "Cart.class.php"]);
 include join(DIRECTORY_SEPARATOR, ["classes", "CartItem.class.php"]);
@@ -21,7 +22,7 @@ if (!empty($options['input'])) {
         DataLoader::loadFromCSV($options['input'], $cart);
 
         //Checkout Cart
-        $cart->checkOut();
+        $cart->checkOut(new ConsoleReceipt());
     } 
     catch(Exception $ex) 
     {

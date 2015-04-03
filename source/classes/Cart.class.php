@@ -8,7 +8,6 @@ Holds an array of CartItems, accumulated tax and total price of items
 
 class Cart 
 {
-    use sanitizeNumber;
 
     private $items;
     private $sales_tax;
@@ -60,15 +59,11 @@ class Cart
 
     /*
     Checks out all the items and prints output
+    Takes Receipt object as input dependency injection
     */
-    public function checkOut() 
+    public function checkOut(Receipt $receipt) 
     {
-        foreach($this->getItems() as $item) {
-            echo implode(", ", array($item->quantity, $item->name, $item->price))."\r\n";
-        }
-        echo "\r\n";
-        echo "Sales Taxes: ".$this->sanitizeNumber($this->getSalesTax())."\r\n";
-        echo "Total: ".$this->sanitizeNumber($this->getTotal())."\r\n";
+        $receipt->printReceipt($this);
     }
 }
 
